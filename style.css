@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
+
+:root{
+    --orange: rgb(241,109,78);
+    --pale-orange: rgb(254,240,238);
+    --grey: #eee;
+    --dark-grey: #808080;
+    --green: rgb(98,169,126);
+    --pale-green: rgb(228,240,233);
+}
+
+::selection{
+    background: var(--pale-green);
+}
+
+*{
+    box-sizing: border-box;
+    color: inherit;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    outline: none;
+    border: none;
+    background: None;
+    font-family: 'PT Serif', sans-serif;
+}
+
+img{
+    max-width: 100%;
+}
+
+/* Button Styling */
+.btn{
+    color: white;
+    background: var(--orange);
+    font-size: 1rem;
+    padding: .75rem 2.5rem;
+    border-radius: 15px;
+    display: block;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.btn, .keypad, .quantity, .cart{
+    cursor: pointer;
+    transition: transform 80ms, opacity .35s ease;
+}
+
+.btn:hover, .keypad:hover, .quantity:hover, .cart:hover{
+    opacity: .75;
+}
+
+.btn:active, .keypad:active, .quantity:active, .cart:active{
+    transform: scale(.9);
+}
+
+.ghost{
+    color: var(--orange);
+    background: var(--pale-orange)
+}
+
+/* ============================ Nav Styling ============================*/
+.main-nav{
+    display: flex;
+    position: absolute;
+    height: 12vh;
+    align-items: center;
+    top: 0;
+    left: 5rem;
+    width: calc(100% - 5rem);
+    padding: 0 1rem;
+}
+
+.main-menu, .side-menu{
+    display: flex;
+}
+
+.side-menu{
+    margin-left: auto;
+}
+
+.nav-link{
+    padding: 1rem;
+}
+
+/* Burger styling */
+.burger{
+    cursor: pointer;
+    margin: 2rem;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.line{
+    margin: .5rem 0;
+    width: 35px;
+    height: 2px;
+    background: var(--orange);
+}
+
+/* Side nav */
+.side-nav{
+    position: fixed;
+    top: 0;
+    width: 5rem;
+    left: 0;
+    height: 100%;
+    text-align: center;
+    padding: 2.5rem 0;
+    border-right: 1px solid var(--grey);
+}
+
+.keypad{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #eee;
+    padding: .85rem;
+    border-radius: 10px;
+}
+
+.dot{
+    width: 4px;
+    height: 4px;
+    background: black;
+    border-radius: 50%;
+}
+
+/* ============================ Content Styling ============================*/
+.content{
+    margin-top: 12vh;
+    margin-left: 5rem;
+    max-height: 88vh;
+    display: flex;
+    padding: 1rem 2.5rem;
+}
+
+/* Highlight styling */
+.highlight{
+    max-width: 50%;
+}
+
+.highlight.card h1, .highlight.card .info{
+    text-align: start;
+}
+
+.highlight img{
+    max-height: 40%;
+}
+
+/* Side styling */
+.side{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 50%;
+    gap: 1rem;
+    padding: 0 1rem 1rem 1rem;
+}
+
+.side .card{
+    background: rgb(248, 248, 248)
+}
+
+.side h1{
+    font-size: 1.25rem;
+}
+
+.side img{
+    max-width: 125px;
+}
+
+/* Card Styling */
+.card{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    border-radius: 25px;
+    box-shadow: 0px 0px 1px rgba(0,0,0,.5);
+    border: 1px solid var(--grey);
+    position: relative;
+}
+
+.card .info{
+    font-size: .85rem;
+    padding-top: .25rem;
+}
+
+/* Calories Styling */
+.calories{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    display: inline-flex;
+    justify-content: center;
+    font-size: .85rem;
+    padding: .5rem;
+    align-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--grey);
+}
+
+/* Nutreints styling */
+.nutrients{
+    display: flex;
+    flex-wrap: wrap;
+    padding: .5rem 0;
+}
+
+.nutrient{
+    font-size: .85rem;
+    padding: .5rem 1rem;
+    border: 1px solid var(--dark-grey);
+    border-radius: 25px;
+    margin: .25rem;
+}
+
+/* Cart Styling */
+.settings{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.price{
+    margin-left: auto;
+    padding: 0 1rem;
+}
+
+.cart{
+    display: flex;
+    align-items: center;
+    color: var(--green);
+    background: var(--pale-green);
+    padding: .75rem;
+    border-radius: 15px;
+}
+
+.add-cart{
+    padding-left: .75rem;
+}
+
+/* quantity */
+.quantity{
+    position: relative;
+    padding: .5rem 2rem;
+    border-radius: 10px;
+    background: var(--grey);
+}
+
+.quantity::before, .quantity::after{
+    position: absolute;
+    content: '';
+    margin: 0 .5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.quantity::before{
+    height: 1px;
+    width: 10px;
+    background: var(--green);
+    left: 0;
+}
+
+.quantity::after{
+    content: '+';
+    right: 0;
+    font-size: 1rem;
+    color: var(--green);
+}
+
+/* ============================ Media Queries ============================*/
+@media screen and (max-width: 1100px){
+    .content{
+        flex-direction: column;
+        max-height: initial;
+        min-height: 88vh;
+    }
+    .highlight{
+        max-width: 100%;
+    }
+    .highlight img{
+        max-height: 300px;
+    }
+    .side{
+        padding: 1rem 0;
+        padding-bottom: 2rem;
+    }
+    .settings{
+        padding: .5rem 0;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .highlight{
+        max-height: 100%;
+    }
+    .side-menu{
+        display: None;
+    }
+    .burger{
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px){
+    :root{
+        font-size: 13px;
+    }
+    .side-nav{
+        position: absolute;
+        border: none;
+    }
+    .keypad{
+        display: none;
+    }
+    .card{
+        justify-content: center;
+    }
+    .content{
+        margin-left: 0;
+        padding: 1rem;
+    }
+    .nav-link{
+        display: none;
+    }
+    .side{
+        grid-template-columns: 1fr;
+    }
+    .settings{
+        padding: .5rem 0;
+    }
+}
