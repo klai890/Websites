@@ -1,0 +1,171 @@
+:root{
+    --purple: rgb(126,157,255);
+    --lavender: rgb(153,182,255);
+    --pale: rgb(237,255,252);
+    --plus-width: 15px
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    background: none;
+    font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* base table styling */
+table{
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+
+td, th{
+    padding: .5em;
+    transition: color .2s ease;
+    cursor: pointer;
+}
+
+td:hover, th:hover{
+    color: red;
+}
+
+/* main containers styling */
+.wrapper{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--purple);
+}
+
+.calendar{
+    background: var(--pale);
+    width: 600px;
+    height: 75%;
+    border-radius: 10px;
+    color: var(--purple);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+/* calendar head styling */
+.calendar-head, .calendar-footer{
+    padding: 2rem;
+    color: var(--lavender);
+    font-weight: bold;
+    display: flex;
+}
+
+.calendar-head span:nth-last-child(1),
+.calendar-footer span:nth-last-child(1){
+    margin-left: auto;
+}
+
+.calendar-head{
+    border-bottom: 1px solid var(--purple);
+}
+
+/* calendar content styling */
+.calendar-content{
+    height: 50%;
+    padding: 0 2rem;
+}
+
+.today, .notifications{
+    display: inline-flex;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.notifications, .plus{
+    transition: color .2s ease;
+}
+
+.today, .notifications:hover, .plus:hover{
+    background: var(--purple);
+    color: white;
+}
+
+.last-month{
+    opacity: .5;
+}
+
+.notifications{
+    position: relative;
+    display: inline-flex;
+    border: 2px solid var(--purple);
+}
+
+.notifications::before{
+    content: attr(count);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(148, 0, 0);
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 10px;
+    height: 15px;
+    width: 15px;
+}
+
+/* calendar footer styling */
+.calendar-footer{
+    border-top: 1px solid var(--purple);
+    position: relative;
+}
+
+.plus{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border: 2px solid var(--purple);
+    padding: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.plus:hover .line{
+    background: white;
+}
+
+.plus:active{
+    transform: translate(-50%, -50%) scale(.9);
+}
+
+.line{
+    position: absolute;
+    height: 2px;
+    content: '';
+    width: var(--plus-width);
+    background: var(--purple);
+    /* Move the actual plus to the center */
+    transform: translateX(-50%);
+}
+
+.line2{
+    /* Rotate the line, and translate it half of its width to the left */
+    transform: rotate(90deg) translateY(calc(var(--plus-width) / 2));
+}
+
+
+@media screen and (max-width: 600px){
+    :root{
+        font-size: 13px;
+    }
+}
