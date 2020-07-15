@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="app.js" defer></script>
+    <title>Signin5</title>
+</head>
+<body>
+    <!-- Page -->
+    <div class="page">
+        <!-- Box -->
+        <div class="box">
+            <!-- Sign in form -->
+            <div class="form-container signin-form-container">
+                <form action="#">
+                    <h1>Sign in</h1>
+                    <div class="social">
+                        <a href="#" class='social-link'><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class='social-link'><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class='social-link'><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <p class="small">or use your account</p>
+                    <input type="email" placeholder='Email'>
+                    <input type="password" placeholder='Password'>
+                    <button class="btn">Sign in</button>
+                </form>
+            </div>
+
+            <!-- Sign up form -->
+            <div class="form-container signup-form-container">
+                <form action="#">
+                    <h1>Create Account</h1>
+                    <div class="social">
+                        <a href="#" class='social-link'><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class='social-link'><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class='social-link'><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <p class="small">or use your email for registration</p>
+                    <input type="text" placeholder="Name">
+                    <input type="email" placeholder='Email'>
+                    <input type="password" placeholder='Password'>
+                    <button class="btn">Sign up</button>
+                </form>
+            </div>
+
+            <!-- Overlay focus -->
+            <div class="overlay-focus">
+                <div class="overlay">
+                    <!-- Sign up overlay -->
+                    <div class="overlay-pannel overlay-right signup-overlay">
+                        <h1>Hello, Friend!</h1>
+                        <p class="info">Enter your personal details and start your journey with us</p>
+                        <button class="btn ghost signup-btn">Sign Up</button>
+                    </div>
+                    <!-- Sign in overlay -->
+                    <div class="overlay-pannel overlay-left signin-overlay">
+                        <h1>Welcome Back!</h1>
+                        <p class="info">To keep connected with us please login with your personal info</p>
+                        <button class="btn ghost signin-btn">Sign In</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End page -->
+</body>
+</html>
