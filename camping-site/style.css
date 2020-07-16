@@ -1,0 +1,374 @@
+:root{
+    --orange: rgb(231,112,81);
+    --tan: rgb(250,242,240);
+    --lin1: rgb(254,213,201);
+    --lin2: rgb(254,248,246);
+    --space: 1rem 0;
+    line-height: 1.5rem;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    text-decoration: none;
+    background: none;
+    border: none;
+    list-style: none;
+    outline: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background: var(--tan);
+}
+
+img{
+    max-width: 100%;
+}
+
+/* button Styling */
+.btn{
+    padding: .5rem 2rem;
+    font-size: 1rem;
+    background: #eee;
+    color: #333;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 1rem 0;
+    transition: opacity .2s ease, transform 80ms;
+}
+
+.btn:hover{
+    opacity: .75;
+}
+
+.btn:active{
+    transform: scale(.9);
+}
+
+.ghost{
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+}
+
+/* =========================== Nav Styling =========================== */
+.main-nav{
+    display: flex;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 0 5rem;
+}
+
+.main-menu, .side-menu{
+    display: flex;
+    align-items: center;
+}
+
+.side-menu{
+    margin-left: auto;
+}
+
+.nav-link{
+    padding: 1rem;
+}
+
+.burger{
+    display: none;
+    cursor: pointer;
+    background: white;
+    padding: .75rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 15px;
+}
+
+.line{
+    height: 2px;
+    width: 30px;
+    background: var(--orange);
+    margin: .35rem 0;
+}
+
+/* =========================== Hero Styling =========================== */
+.hero{
+    height: 75vh;
+    background:
+        url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpokenstoke.com%2Fwp-content%2Fuploads%2F2018%2F11%2Fcamping-sunset.jpg&f=1&nofb=1 ') center / cover no-repeat,
+        rgba(0,0,0,.5);
+    background-blend-mode: multiply;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0px 0px 200px 200px / 0px 0px 175px 175px;
+}
+
+.title, .subtitle{
+    width: 60%;
+    margin: auto;
+}
+
+.title{
+    font-size: 3rem;
+    line-height: initial;
+    padding: var(--space);
+}
+
+/* =========================== Boxes Styling =========================== */
+.boxes{
+    position: absolute;
+    top: 60vh;
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.box{
+    padding: 1.5rem;
+    background: white;
+    margin: 0 1rem;
+    min-height: 15rem;
+    width: 18rem;
+    border-radius: 15px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 5px rgba(0,0,0,.6);
+}
+
+.box h3{
+    font-size: 1rem;
+    padding: .5rem 0;
+}
+
+/* =========================== Destinations Styling =========================== */
+.destinations{
+    margin-top: 15rem;
+    text-align: center;
+}
+
+.destinations h2{
+    padding: var(--space);
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    grid-auto-rows: 500px;
+    padding: 2.5rem 5rem;
+}
+
+.destination{
+    background: white;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, .5);
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.destination h3{
+    padding: var(--space);
+}
+
+.price{
+    color: var(--orange);
+    background: white;
+    padding: .5rem;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+.destinations > .btn{
+    color: var(--orange);
+    background: transparent;
+    border: 1px solid var(--orange);
+    padding: .5rem 2.5rem;
+    font-size: 1.25rem;
+}
+
+/* Image positioning */
+.destination .img-container{
+    position: relative;
+    height: 50%;
+    width: 100%;
+}
+
+.destinations div[class^='image']{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: opacity .5s ease;
+}
+
+.destinations div[class^='image']:hover{
+    opacity: .75;
+}
+
+/* Tooltip */
+.img-container::before,
+.img-container::after{
+    --scale: 0;
+    position: absolute;
+    content: '';
+    left: 50%;
+    box-sizing: border-box;
+    z-index: 500;
+    transition: transform .5s ease;
+}
+
+.img-container::before{
+    content: 'Image';
+    color: white;
+    background: #333;
+    padding: .5rem;
+    border-radius: 5px;
+    top: -1rem;
+    transform-origin: bottom;
+    transform: translateX(-50%) scale(var(--scale));
+}
+
+.img-container::after{
+    border: 10px solid transparent;
+    border-top-color: #333;
+    top: -1rem;
+    transform-origin: top;
+    transform: translate(-50%, 200%) scale(var(--scale));
+}
+
+.img-container:hover::before,
+.img-container:hover::after{
+    --scale: 1;
+}
+
+/* Images */
+
+.image1{
+background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Ftog3dRQxENs%2Fmaxresdefault.jpg&f=1&nofb=1') center / cover no-repeat;
+}
+.image2{
+background: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fearthporm.com%2Fwp-content%2Fuploads%2F2015%2F04%2FMorning-Glow-Photo-By-Andrew-Soundarajan.jpeg&f=1&nofb=1') center / cover no-repeat;
+}
+.image3{
+background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.wp.com%2Ftechbeasts.com%2Fwp-content%2Fuploads%2F2016%2F05%2Fmountain_nature_elegant_wallpaper_3f.jpg&f=1&nofb=1') center / cover no-repeat;
+}
+.image4{
+background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2FuYv54mS.jpg&f=1&nofb=1') center / cover no-repeat;
+}
+.image5{
+background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2F5OaLJ3w.jpg&f=1&nofb=1') center / cover no-repeat;
+}
+.image6{
+background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1200%2F0*XJq7btvmRjwn3Poz.jpg&f=1&nofb=1') center / cover no-repeat;
+}
+
+/* =========================== Contact Styling =========================== */
+.contact{
+    display: flex;
+    margin: 2.5rem auto;
+    width: 80%;
+    border-radius: 15px;
+    background: var(--lin1);
+    box-shadow: 0px 1px 5px rgba(0,0,0,.5);
+}
+
+.subscribe{
+    min-height: 100%;
+    padding: 5rem;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(to right, var(--lin1), var(--lin2));
+    border-radius: 15px 150px 150px 15px;
+}
+
+.subscribe p{
+    padding: var(--space);
+}
+
+.subscribe h2{
+    font-size: 2rem;
+    line-height: initial;
+}
+
+.subscribe input{
+    padding: 1rem 3rem;
+    background: 
+        url('https://image.flaticon.com/icons/svg/561/561127.svg') 2.5% / 20px no-repeat,
+        url('https://image.flaticon.com/icons/svg/2983/2983676.svg') 97.5% / 20px no-repeat,
+        white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.5);
+}
+
+.image-container{
+    padding: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================== Media Queries =========================== */
+@media screen and (max-width: 1200px){
+    .main-nav{
+        padding: 0;
+    }
+    .nav-link{
+        display: none;
+    }
+    .brand, .burger{
+        display: block;
+        margin: 1rem;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .boxes{
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+    .box{
+        width: 100%;
+        margin: var(--space);
+    }
+    .destinations{
+        margin-top: 65rem;
+    }
+    .header{
+        padding: 1rem;
+    }
+    .grid{
+        padding: 2.5rem;
+    }
+    .contact{
+        flex-direction: column;
+    }
+    .subscribe{
+        padding: 5rem 2.5rem;
+        border-radius: 15px 15px 150px 150px;
+        background: linear-gradient(to bottom, var(--lin1), var(--lin2));
+    }
+}
+
+@media screen and (max-width: 600px){
+    :root{
+        font-size: 14px;
+    }
+}
