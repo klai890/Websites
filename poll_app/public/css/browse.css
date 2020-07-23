@@ -1,0 +1,60 @@
+.title{
+    line-height: 2.5;
+}
+
+.options{
+    height: 100%;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, 100px);
+}
+
+.option{
+    padding: .5rem;
+    background: var(--main);
+    color: white;
+    cursor: pointer;
+}
+
+.searchbar{
+    width: 100%;
+    /* background: 
+        url('https://image.flaticon.com/icons/svg/622/622669.svg') calc(100% - 15px) center / 15px no-repeat,
+
+        url('https://image.flaticon.com/icons/svg/1828/1828778.svg') calc(100% - 45px) center / 12px no-repeat,
+        #eee; */
+    margin: 2rem 0;
+}   
+
+.search-head{
+    position: relative;
+    margin: 2rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.search-after, .border-between{
+    width: 15px;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.search-after{
+    cursor: pointer;
+}
+
+#x{
+    /* will appear on click, and clears #searchbar on click */
+    right: 60px;
+    width: 12px;
+}
+
+.border-between{
+    height: 20px;
+    width: 1px;
+    background: #aaa;
+    right: 45px;
+}

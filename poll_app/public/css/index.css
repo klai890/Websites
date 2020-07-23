@@ -1,0 +1,21 @@
+.hero{
+    text-align: center;
+    margin: 3rem auto 0 auto;
+}
+
+.hero-img{
+    border-radius: 30% 45% / 40% 40%;
+    max-width: 600px;
+    background: radial-gradient(var(--secondary) 30%, var(--main));
+}
+
+.head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section{
+    padding: 2rem;
+    line-height: 1.5;
+}

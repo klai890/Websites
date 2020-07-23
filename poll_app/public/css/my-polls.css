@@ -1,0 +1,35 @@
+.content{
+    text-align: center;
+}
+
+h1{
+    padding: 3rem;
+}
+
+.avatar{
+    max-height: 200px;
+    margin: 2rem;
+    border-radius: 50%;
+}
+
+.profile-info{
+    border: 1px solid #333;
+    max-width: 600px;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+.social-media{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-media a{
+    padding: .5rem;
+}
+
+.polls{
+    grid-auto-rows: 10rem;
+}
