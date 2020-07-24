@@ -4,14 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/create-poll.css">
     <title>Create a Poll</title>
 </head>
 <body>
     <nav>
         <a href="index.html" class='brand'>Polar</a>
         <a href="browse.html">Browse Polls</a>
-        <a href="my-polls.html">My Polls</a>
+        <a href="account.html">My Account</a>
     </nav>
+    <form method="post" class='content create-form' action='/addpoll' id='create-form'>
+        <h3 class="section-title">Settings</h3>
+        <input type="text" name='title' placeholder='Poll Title'>
+        <textarea type="text" name='description' placeholder='Poll Description'></textarea>
+        <div class="heading">
+            <h3 class='section-title'>Options</h3>
+            <div class='btn add-btn'>
+                <div class="plus-btn">
+                    <div class="line line1"></div>
+                    <div class="line line2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="options">
+            <input type="text" placeholder='Option 1' class='option' name='options'> 
+            <input type="text" placeholder='Option 2' class='option' name='options'>
+        </div>
+        <input type="submit" class='btn'>
+    </form>
     <a class="wrapper" href='create-poll.html'>
         <div class="plus-btn">
             <div class="line line1"></div>

@@ -10,6 +10,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    border: none;
     outline: none;
 }
 
@@ -17,7 +18,7 @@ a{color: inherit; text-decoration: none;}
 
 img{max-width: 100%;}
 
-input{
+input, textarea{
     font-family: Avenir Next, Arial, Helvetica, sans-serif;
     margin: 1rem 0;
     padding: .75rem;
@@ -25,6 +26,11 @@ input{
     border-radius: 5px;
     font-size: 1rem;
     background: #eee;
+    resize: vertical;
+}
+
+form{
+    text-align: center;
 }
 
 .content{
@@ -72,6 +78,13 @@ nav a{
     font-size: 1.35rem;
     color: #808080;
     line-height: 1.5;
+}
+
+.section-title{
+    font-size: 2rem;
+    margin: 1rem 0;
+    border-bottom: 1px solid var(--main);
+    color: var(--main);
 }
 
 .polls{

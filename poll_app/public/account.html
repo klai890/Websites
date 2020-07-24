@@ -6,19 +6,20 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/my-polls.css">
+    <script src="js/myAccount.js" defer></script>
     <title>My Polls</title>
 </head>
 <body>
     <nav>
         <a href="index.html" class='brand'>Polar</a>
         <a href="browse.html">Browse Polls</a>
-        <a href="my-polls.html">My Polls</a>
+        <a href="account.html">My Account</a>
     </nav>
-    <div class="content">
+    <section class="content">
         <img src="img/avatar.svg" alt="" class='avatar'>
-        <p class='profile-info'>Username: PumpkinPie39</p>
-        <p class="profile-info">Polls Voted: 49</p>
-        <p class="profile-info">Polls Created: 21</p>
+        <p class='profile-info' id='username'>Username: PumpkinPie39</p>
+        <p class="profile-info" id='polls-voted'>Polls Voted: 49</p>
+        <p class="profile-info" id='polls-created'>Polls Created: 21</p>
         <div class="social-media">
             <a class="fab fa-facebook-f" href='#'></a>
             <a class="fab fa-twitter" href='#'></a>
@@ -44,7 +45,7 @@
                 <p class="poll-description">Let's figure out which the majority prefers</p>
             </div>
         </div>
-    </div>
+    </section>
     <a class="wrapper" href='create-poll.html'>
         <div class="plus-btn">
             <div class="line line1"></div>
