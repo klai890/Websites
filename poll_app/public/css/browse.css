@@ -8,13 +8,23 @@
     align-content: center;
     justify-content: center;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 1rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
 .option{
-    padding: .5rem;
-    background: var(--main);
+    height: 100%;
+    border: 1px solid #aaa;
+    display: flex;
+    flex-direction: column;
+}
+
+.option-btn{
+    flex: 1 1 0;
+    width: 100%;
     color: white;
+    background: var(--main);
+    padding: .5rem;
     cursor: pointer;
 }
 
@@ -52,4 +62,21 @@
     width: 1px;
     background: #aaa;
     right: 45px;
+}
+
+.poll-footer{
+    padding-top: 1rem;
+    line-height: 1.25;
+    margin-top: auto;
+    text-align: start;
+}
+
+.poll-footer p{
+    padding: .5rem 0;
+}
+
+.poll-vote{
+    text-align: center;
+    margin-top: auto;
+    line-height: 2;
 }

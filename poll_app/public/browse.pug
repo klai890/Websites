@@ -22,13 +22,15 @@ section.content
     each row in rows
       .poll(id= row._id)
         h3.poll-title #{row.title}
-        each opt in row.options
-          form.options(action='/vote' method='post')
-            button.option(value= opt name= row._id)= opt
+        .options
+          each opt in row.options
+            form.option(action='/vote' method='post')
+              button.option-btn(value= opt._id name= opt.name)= opt.name
+              p.poll-vote Votes: #{opt.votes}
 
-        p.poll-description= row.description
-        p.poll-description Creator: #{row.creator}
-        //p.poll-description Votes: #{row.voters.length}
+        .poll-footer
+          p.poll-description= row.description
+          p.poll-description Creator: #{row.creator}
 a.wrapper(href='create-poll')
   .plus-btn
     .line.line1

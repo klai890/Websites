@@ -28,8 +28,14 @@ var pollSchema = new mongoose.Schema({
     description: String,
     creator: String,
     date: {type: Date, default: Date.now},
-    options: [{type: String}],
-    votes: [{}]
+    options: [
+        {
+            name: String,
+            votes: Number
+        }
+
+    ]
+    
 });
 
 var userSchema = new mongoose.Schema({
@@ -48,6 +54,10 @@ router.get('/', (req, res)=>{
     res.render('index')
 })
 
+router.get('/home', (req, res)=>{
+    res.render('index')
+})
+
 router.get('/browse', (req, res)=>{
     // grab all rows from database and display them
     Poll.find({}).sort({date: -1}).exec((err, data)=>{
@@ -56,6 +66,10 @@ router.get('/browse', (req, res)=>{
         })
     })
 
+})
+
+router.get('/register', (req, res)=>{
+    res.render('register')
 })
 
 router.get('/create-poll', (req, res)=>{
@@ -86,21 +100,20 @@ router.get('/account', (req, res)=>{
     })
 })
 
-router.get('/register', (req, res)=>{
-    res.render('register')//{message: 'Username already taken'})
-})
-
 // POSTING PATHS
 // add poll
 app.post('/addpoll', (req, res)=>{
-    let data = new Poll(req.body)
-    data.creator = currentUser;
-    // initialize all counts to
-    for (opt in data.options){
-        let optionName = data.options[opt];
-        console.log(data, data.options[opt], data.options)
-        data.votes.push({option: optionName, count: 0})
+    let options = [];
+    for (opt in req.body.options){
+        options.push({name: req.body.options[opt], votes: 0})
     }
+    let data = new Poll({
+        title: req.body.title,
+        description: req.body.description,
+        creator: currentUser,
+        options: options
+    })
+
     console.log(data)
     data.save()
     .then(s=>{
@@ -142,7 +155,7 @@ app.post('/adduser', (req, res)=>{
 
 // search functionality browse page
 app.post('/search', (req, res)=>{
-    Poll.find({title: new RegExp(req.body.query, 'i')}).sort({date: -1}).exec((err, data)=>{
+    Poll.find({title: new registerExp(req.body.query, 'i')}).sort({date: -1}).exec((err, data)=>{
         res.render('browse', {
             query: req.body.query,
             rows: data
@@ -153,21 +166,15 @@ app.post('/search', (req, res)=>{
 // vote
 app.post('/vote', (req, res)=>{
     // grab id of the poll we're voting on
-    let pollId = Object.keys(req.body)[0];
-    
-    // grab value of the option
-    let optionName = Object.values(req.body)[0];
+    let optionId = Object.values(req.body)[0];
+    let optionName = Object.keys(req.body)[0]
 
-    Poll.findOne({_id: pollId}, 'options votes' , (err, data)=>{
-        // grab the index of the key in the options array, 
+    // increment vote count on option
+    Poll.findOneAndUpdate({options: {$elemMatch: {'_id': mongoose.Types.ObjectId(optionId)}}}, {$inc: {'options.$.votes': 1}}, (err, data)=>{
         if (err) throw err;
-        let index = data.options.indexOf(optionName);
-        // and increment the corresponding vote count in the votes array
-        console.log(data.votes[index].count)
-         
     })
 
-    res.send(`${optionName}, ${pollId}`)
+    res.redirect('/browse')
 })
 
 const PORT = process.env.PORT || 8000;

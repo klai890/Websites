@@ -93,11 +93,16 @@ nav a{
     color: var(--main);
 }
 
+.poll-title{
+    margin-bottom: auto;
+    padding: .5rem 0;
+}
+
 .polls{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 300px;
     gap: 1.5rem;
+    font-family: Avenir Next, Arial, Helvetica, sans-serif;
 }
 
 .poll{

@@ -10,10 +10,7 @@ nav
   a.brand(href='/') Polar
   a(href='/browse') Browse Polls
   a(href='/account') My Account
-// might want to merge these later, just render with different content
 section#alerts.content
-    if message
-        .alert.alert-error #{message}
 section#register.content
   form#register-form.content.create-form(action='/adduser' method='POST')
     h3.section-title Register or Login
