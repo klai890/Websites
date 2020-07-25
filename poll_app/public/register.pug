@@ -1,0 +1,27 @@
+doctype html
+// and by extension, login
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='css/style.css')
+  link(rel='stylesheet' href='css/create-poll.css')
+  title Register or Login
+nav
+  a.brand(href='/') Polar
+  a(href='/browse') Browse Polls
+  a(href='/account') My Account
+// might want to merge these later, just render with different content
+section#alerts.content
+    if message
+        .alert.alert-error #{message}
+section#register.content
+  form#register-form.content.create-form(action='/adduser' method='POST')
+    h3.section-title Register or Login
+    input(type='text' name='username' placeholder='Username')
+    input(type='password' name='password' placeholder='Password')
+    input.btn(type='submit')
+a.wrapper(href='/create-poll')
+  .plus-btn
+    .line.line1
+    .line.line2
+

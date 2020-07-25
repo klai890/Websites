@@ -3,7 +3,13 @@
 :root{
     --main: #0075CB;
     --secondary: #CCA714;
+    --error: #F9D7DA;
     font-family: Raleway;
+}
+
+button{
+    font-size: 1rem;
+    font-family: inherit;
 }
 
 *{
@@ -108,7 +114,6 @@ nav a{
 }
 
 .wrapper{
-
     position: fixed;
     bottom: 0;
     right: 0;
@@ -136,4 +141,18 @@ nav a{
 .line1{
     /* translate by -15px (half of line height) to center */
     transform: rotate(90deg) translateX(-15px);
+}
+
+.alert{
+    text-align: center;
+    margin: 2.5rem auto;
+    padding: 1rem;
+    max-width: 800px;
+}
+
+.alert-error{
+    background: var(--error);
+    color: #8A3D42;
+    border: 1px solid #F6C6CA;
+    border-radius: 5px;
 }
