@@ -1,82 +1,50 @@
-const http = require('http');
 const path = require('path')
-const fs = require('fs');
 const { url } = require('inspector');
+
+// express stuff
 const express = require('express');
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
-const { profile } = require('console');
-const app = express();
-mongoose.Promise = global.Promise;
-const pollsDatabase = mongoose.createConnection("mongodb://localhost:27017/polls");
-const usersDatabase = mongoose.createConnection('mongodb://localhost:27017/users');
-var currentUser;
+const app = new express();
 
 // EXPRESS CONFIG
-const router = express.Router();
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'public'))
-app.use('/', router);
+const ejs = require('ejs');
+app.set('view engine', 'ejs');
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, 'public')))
 
+// data
+const Poll = require('./models/Poll')
+const User = require('./models/User')
 
-// SET DATABASE SCHEMAS
-var pollSchema = new mongoose.Schema({
-    title: String,
-    description: String,
-    creator: String,
-    date: {type: Date, default: Date.now},
-    options: [
-        {
-            name: String,
-            votes: Number
-        }
-
-    ]
-    
-});
-
-var userSchema = new mongoose.Schema({
-    username: String,
-    password: String,
-    img: String,
-    date: {type: Date, default: Date.now}
-})
-
-var Poll = pollsDatabase.model("Poll", pollSchema);
-var User = usersDatabase.model("User", userSchema)
-
+var currentUser;
 
 // ROUTE CONFIGURATION
-router.get('/', (req, res)=>{
+app.get('/', (req, res)=>{
     res.render('index')
 })
 
-router.get('/home', (req, res)=>{
+app.get('/home', (req, res)=>{
     res.render('index')
 })
 
-router.get('/browse', (req, res)=>{
+app.get('/browse', async (req, res)=>{
     // grab all rows from database and display them
-    Poll.find({}).sort({date: -1}).exec((err, data)=>{
-        res.render('browse', {
-            rows: data
-        })
-    })
+    let rows = await Poll.find({}).sort({date: -1});
+    res.render('browse', {rows: rows})
 
 })
 
-router.get('/register', (req, res)=>{
+app.get('/register', (req, res)=>{
     res.render('register')
 })
 
-router.get('/create-poll', (req, res)=>{
+app.get('/create-poll', (req, res)=>{
     res.render('create-poll')
 })
 
-router.get('/account', (req, res)=>{
+app.get('/account', (req, res)=>{
     // if not logged in, go to register page
     if (!currentUser){
         res.redirect('/register')
@@ -164,16 +132,10 @@ app.post('/search', (req, res)=>{
 })
 
 // vote
-app.post('/vote', (req, res)=>{
+app.post('/vote', async (req, res)=>{
     // grab id of the poll we're voting on
-    let optionId = Object.values(req.body)[0];
-    let optionName = Object.keys(req.body)[0]
-
-    // increment vote count on option
-    Poll.findOneAndUpdate({options: {$elemMatch: {'_id': mongoose.Types.ObjectId(optionId)}}}, {$inc: {'options.$.votes': 1}}, (err, data)=>{
-        if (err) throw err;
-    })
-
+    let optionId = req.body.options
+    await Poll.findOneAndUpdate({options: {$elemMatch: {'_id': mongoose.Types.ObjectId(optionId)}}}, {$inc: {'options.$.votes': 1}});
     res.redirect('/browse')
 })
 

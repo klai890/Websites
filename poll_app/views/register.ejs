@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/create-poll.css">
+    <title>Register</title>
+</head>
+<body>
+    <nav>
+        <a href="/" class='brand'>Polar</a>
+        <a href="/browse">Browse Polls</a>
+        <a href="/account">My Account</a>
+    </nav>
+    <section class="content" id="register">
+        <form action="/adduser" method='POST' id='register-form' class='content create-form'>
+            <h3 class="section-title">Register or Login</h3>
+            <input type="text" name='username' placeholder='Username'>
+            <input type="password" name='password' placeholder='Password'>
+            <input type="submit" class='btn'>
+        </form>
+    </section>
+    <a href="/create-poll" class="wrapper">
+      <div class="plus-btn">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+      </div>
+    </a>
+</body>
+</html>

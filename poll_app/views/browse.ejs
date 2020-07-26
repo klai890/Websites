@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/browse.css">
+    <title>New Polls</title>
+</head>
+<body>
+    <nav>
+        <a href="/" class='brand'>Polar</a>
+        <a href="/browse">Browse Polls</a>
+        <a href="/account">My Account</a>
+    </nav>
+    <section class="content">
+
+      <div class="search-head">
+        <form action="/search" method='POST'>
+          <input type="text" id="searchbar" class="searchbar" placeholder='Search' name='query'>
+          <img src="https://image.flaticon.com/icons/svg/622/622669.svg" alt="" class="search-after">
+          <div class="border-between"></div>
+          <img id="x" class="search-after" src='https://image.flaticon.com/icons/svg/1828/1828778.svg'>
+        </form>
+      </div>
+      <div class="polls">
+        <% if (rows.length === 0){ %>
+          <h1>No matches found for "<%= query %>"</h1>
+        <% } %>
+        <% for (row in rows){ %>
+          <div class="poll" id='<%= rows[row]._id %>'>
+            <h3 class="poll-title"><%= rows[row].title %></h3>
+            <div class="options">
+              <% var options = rows[row].options %>
+              <% for (opt in options){ %>
+                <form action="/vote" method='post' class="option">
+                  <button class="option-btn" value='<%= options[opt]._id %>' name='options'><%= options[opt].name %></button>
+                  <p class="poll-vote">Votes: <%= options[opt].votes %></p>
+                </form>
+              <% } %>
+            </div>
+            <div class="poll-footer">
+              <p class="poll-description"><%= rows[row].description %></p>
+              <p class="poll-description">Creator: <%= rows[row].creator %></p>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </section>
+
+    <a class="wrapper" href='/create-poll'>
+        <div class="plus-btn">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+        </div>
+    </a>
+</body>
+</html>

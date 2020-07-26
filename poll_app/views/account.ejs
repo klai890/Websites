@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/my-polls.css">
+    <script src="js/myAccount.js" defer></script>
+    <title>My Polls</title>
+</head>
+<body>
+    <nav>
+        <a href="/" class='brand'>Polar</a>
+        <a href="/browse">Browse Polls</a>
+        <a href="/account">My Account</a>
+    </nav>
+    <section class="content">
+    <img src="<%= img %>", alt="" class='avatar'>
+      <p id="poll-username" class="profile-info">Username: <%= username %></p>
+      <p id="polls-created" class="profile-info">Polls Created: <%= pollsCreated.length%></p>
+      <p id="date-created" class="profile-info">Date Created <%= date %></p>
+      <h1>My Polls</h1>
+      <div class="polls">
+        <% if (pollsCreated.length === 0){ %>
+          <p>Click on the yellow plus button to create a poll!</p>
+        <% } %>
+        <% for (poll in pollsCreated){ %>
+          <div class="poll">
+            <h3 class="poll-title"><%= pollsCreated[poll].title %></h3>
+            <p class="poll-description"><%= pollsCreated[poll].description %></p>
+          </div>
+        <% } %>
+      </div>
+    </section>
+    <a class="wrapper" href='/create-poll'>
+        <div class="plus-btn">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+        </div>
+    </a>
+</body>
+</html>
