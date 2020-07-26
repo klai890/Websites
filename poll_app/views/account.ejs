@@ -10,17 +10,15 @@
     <title>My Polls</title>
 </head>
 <body>
-    <nav>
-        <a href="/" class='brand'>Polar</a>
-        <a href="/browse">Browse Polls</a>
-        <a href="/account">My Account</a>
-    </nav>
+    <%- include('./layouts/nav.ejs') %>
+
     <section class="content">
     <img src="<%= img %>", alt="" class='avatar'>
       <p id="poll-username" class="profile-info">Username: <%= username %></p>
       <p id="polls-created" class="profile-info">Polls Created: <%= pollsCreated.length%></p>
       <p id="date-created" class="profile-info">Date Created <%= date %></p>
       <h1>My Polls</h1>
+      
       <div class="polls">
         <% if (pollsCreated.length === 0){ %>
           <p>Click on the yellow plus button to create a poll!</p>
@@ -33,11 +31,7 @@
         <% } %>
       </div>
     </section>
-    <a class="wrapper" href='/create-poll'>
-        <div class="plus-btn">
-            <div class="line line1"></div>
-            <div class="line line2"></div>
-        </div>
-    </a>
+
+    <%- include('./layouts/plus.ejs') %>
 </body>
 </html>

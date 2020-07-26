@@ -8,13 +8,8 @@
     <title>New Polls</title>
 </head>
 <body>
-    <nav>
-        <a href="/" class='brand'>Polar</a>
-        <a href="/browse">Browse Polls</a>
-        <a href="/account">My Account</a>
-    </nav>
+    <%- include('./layouts/nav.ejs') %>
     <section class="content">
-
       <div class="search-head">
         <form action="/search" method='POST'>
           <input type="text" id="searchbar" class="searchbar" placeholder='Search' name='query'>
@@ -34,7 +29,7 @@
               <% var options = rows[row].options %>
               <% for (opt in options){ %>
                 <form action="/vote" method='post' class="option">
-                  <button class="option-btn" value='<%= options[opt]._id %>' name='options'><%= options[opt].name %></button>
+                  <button class="option-btn" value='<%= options[opt]._id %>' name=><%= options[opt].name %></button>
                   <p class="poll-vote">Votes: <%= options[opt].votes %></p>
                 </form>
               <% } %>
@@ -47,12 +42,6 @@
         <% } %>
       </div>
     </section>
-
-    <a class="wrapper" href='/create-poll'>
-        <div class="plus-btn">
-            <div class="line line1"></div>
-            <div class="line line2"></div>
-        </div>
-    </a>
+    <%- include('./layouts/plus.ejs') %>
 </body>
 </html>
