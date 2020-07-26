@@ -1,5 +1,4 @@
 const path = require('path')
-const { url } = require('inspector');
 
 // express stuff
 const express = require('express');
@@ -17,18 +16,19 @@ app.use(express.static(path.join(__dirname, 'public')))
 // data
 const Poll = require('./models/Poll')
 const User = require('./models/User')
-
 var currentUser;
 
-// ROUTE CONFIGURATION
+// home
 app.get('/', (req, res)=>{
     res.render('index')
 })
 
+// home
 app.get('/home', (req, res)=>{
     res.render('index')
 })
 
+// browse
 app.get('/browse', async (req, res)=>{
     // grab all rows from database and display them
     let rows = await Poll.find({}).sort({date: -1});
@@ -36,39 +36,36 @@ app.get('/browse', async (req, res)=>{
 
 })
 
+// register
 app.get('/register', (req, res)=>{
     res.render('register')
 })
 
+// create poll
 app.get('/create-poll', (req, res)=>{
     res.render('create-poll')
 })
 
-app.get('/account', (req, res)=>{
-    // if not logged in, go to register page
+// account
+app.get('/account', async (req, res)=>{
     if (!currentUser){
         res.redirect('/register')
     }
 
-    // render account data to screen
-    Poll.find({'creator': currentUser}, (err, createdRows)=>{
-        if (err) throw err;
-        User.findOne({'username': currentUser}, (err, userData)=>{
-            profilePicture = userData.img;
-            date = [...String(userData.date).split(' ')].slice(0, 4).join(' ')
-            if (profilePicture == undefined) profilePicture = 'img/avatar.svg'
-            // if no rows, don't send pollsCreated attribute
-            res.render('account', {
-                username: currentUser, 
-                img: profilePicture,
-                pollsCreated: createdRows, 
-                date: date
-            })
-        })
+    let createdRows = await Poll.find({'creator': currentUser});
+    let user = await User.findOne({'username': currentUser});
+
+    let profilePicture = user.img === undefined ? 'img/avatar.svg' : user.img;
+    let date = [...String(user.date).split(' ')].slice(0, 4).join(' ')
+
+    res.render('account', {
+        username: currentUser, 
+        img: profilePicture,
+        pollsCreated: createdRows, 
+        date: date
     })
 })
 
-// POSTING PATHS
 // add poll
 app.post('/addpoll', (req, res)=>{
     let options = [];
@@ -123,7 +120,7 @@ app.post('/adduser', (req, res)=>{
 
 // search functionality browse page
 app.post('/search', (req, res)=>{
-    Poll.find({title: new registerExp(req.body.query, 'i')}).sort({date: -1}).exec((err, data)=>{
+    Poll.find({title: new RegExp(req.body.query, 'i')}).sort({date: -1}).exec((err, data)=>{
         res.render('browse', {
             query: req.body.query,
             rows: data
@@ -133,7 +130,6 @@ app.post('/search', (req, res)=>{
 
 // vote
 app.post('/vote', async (req, res)=>{
-    // grab id of the poll we're voting on
     let optionId = req.body.options
     await Poll.findOneAndUpdate({options: {$elemMatch: {'_id': mongoose.Types.ObjectId(optionId)}}}, {$inc: {'options.$.votes': 1}});
     res.redirect('/browse')
