@@ -20,23 +20,27 @@
       </div>
       <div class="polls">
         <% if (rows.length === 0){ %>
-          <h1>No matches found for "<%= query %>"</h1>
+          <!-- CHANGE TO NO MATCHES FOUND FOR <%// QUERY %> -->
+          <h1>No matches found for "<%= rows %>"</h1>
         <% } %>
         <% for (row in rows){ %>
-          <div class="poll" id='<%= rows[row]._id %>'>
-            <h3 class="poll-title"><%= rows[row].title %></h3>
+          <% var rowData = rows[row] %>
+          <div class="poll" id='<%= rowData._id %>'>
+            <h3 class="poll-title"><%= rowData.title %></h3>
             <div class="options">
-              <% var options = rows[row].options %>
+              <% var allOptionsData = rowData.options %>
+              <% var options = Object.keys(rowData.options) %>
               <% for (opt in options){ %>
+                <% var optName = options[opt] %>
                 <form action="/vote" method='post' class="option">
-                  <button class="option-btn" value='<%= options[opt]._id %>' name=><%= options[opt].name %></button>
-                  <p class="poll-vote">Votes: <%= options[opt].votes %></p>
+                  <button class="option-btn" value='<%= `ID:${rowData._id};OPTION:${optName}` %>' name= 'options'><%= optName %></button>
+                  <p class="poll-vote">Votes: <%= allOptionsData[optName].votes %></p>
                 </form>
               <% } %>
             </div>
             <div class="poll-footer">
-              <p class="poll-description"><%= rows[row].description %></p>
-              <p class="poll-description">Creator: <%= rows[row].creator %></p>
+              <p class="poll-description"><%= rowData.description %></p>
+              <p class="poll-description">Creator: <%= rowData.creator %></p>
             </div>
           </div>
         <% } %>

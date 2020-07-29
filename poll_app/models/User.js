@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
-const usersDatabase = mongoose.createConnection('mongodb://localhost:27017/users', {useNewUrlParser: true});
+const bcrypt = require('bcrypt');
 
 var UserSchema = new Schema({
     username: String,
@@ -10,5 +9,14 @@ var UserSchema = new Schema({
     date: {type: Date, default: Date.now}
 })
 
-const User = usersDatabase.model('User', UserSchema);
+// hash the password before saving
+UserSchema.pre('save', function(next){
+    const user = this;
+    bcrypt.hash(user.password, 10, (err, hash)=>{
+        user.password = hash;
+        next();
+    })
+})
+
+const User = mongoose.model('User', UserSchema);
 module.exports = User;

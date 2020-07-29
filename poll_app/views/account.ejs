@@ -16,7 +16,7 @@
     <img src="<%= img %>", alt="" class='avatar'>
       <p id="poll-username" class="profile-info">Username: <%= username %></p>
       <p id="polls-created" class="profile-info">Polls Created: <%= pollsCreated.length%></p>
-      <p id="date-created" class="profile-info">Date Created <%= date %></p>
+      <p id="date-created" class="profile-info">Date Created <%= date.toDateString() %></p>
       <h1>My Polls</h1>
       
       <div class="polls">
