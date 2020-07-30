@@ -5,12 +5,36 @@
     <%- include('./layouts/nav') %>
     <section class="header">New Post</section>
     <section class="content contact-content">
-        <form action="/store/contact" class='contact-form'>
+        <form action="/store/post" class='contact-form' method='post' enctype='multipart/form-data'>
             <div class="form-area">
                 <input type="text" placeholder='Title' name='title'>
             </div>
             <div class="form-area">
-                <input type="text" placeholder='Body' name='body'>
+                <textarea name="body" id="body" rows="5""></textarea>
+                <script>
+                    $('#body').summernote(
+                        {
+                            placeholder: 'Start typing...',
+                            tabsize: 2,
+                            height: 500,
+                            toolbar: [
+                            ['style', ['style']],
+                            ['font', ['bold', 'underline', 'clear']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['fullscreen', 'codeview', 'help']]
+                            ]
+                        }
+                    );
+                </script>
+            </div>
+            <div class="form-area">
+                <input type="file" name='image' id='image'>
+            </div>
+            <div class="form-area">
+                <input type="date" name='date' id='date'>
             </div>
             <div class="form-area">
                 <button type='submit' class='submit-btn'>Send</button>

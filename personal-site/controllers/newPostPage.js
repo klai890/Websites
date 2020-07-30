@@ -1,3 +1,3 @@
 module.exports = (req, res)=>{
-    res.render('newpost')
+    res.render('newpost', {newPost: true})
 }
