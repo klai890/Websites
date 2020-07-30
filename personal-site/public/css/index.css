@@ -1,0 +1,63 @@
+.banner, .header{
+    background: #eee;
+    text-align: center;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    height: 300px;
+    font-size: 2.5rem;
+    color: var(--green);   
+    font-family: 'Raleway';
+}
+
+.banner-logo{
+    max-width: 500px;
+}
+
+.articles{
+    margin: 3rem 10rem;
+}
+
+.articles{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 350px;
+    align-content: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+article{
+    text-align: center;
+}
+
+
+.thumbnail{
+    object-fit: cover;
+    width: 100%;
+    height: 60%;
+}
+
+.more{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    justify-content: space-around;
+    padding: 1rem 0;
+    color: #808080;
+}
+
+.article-title{
+    font-size: 1.5rem;
+    font-family: 'Avenir';
+    color: #333;
+}
+
+.data{
+    padding: .5rem 0;
+}

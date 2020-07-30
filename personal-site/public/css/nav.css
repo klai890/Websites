@@ -1,0 +1,30 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 8vh;
+    padding: 0 2.5rem;
+    background: rgba(190, 130, 59, .75);
+    opacity: .75;
+}
+
+.navbar li:nth-of-type(1){
+    margin-right: auto;
+    font-size: 1.35rem;
+}
+
+.nav-item{
+    padding: 1rem;
+    text-align: center;
+}
+.nav-link{
+    font-family: 'Roboto', Helvetica, sans-serif;
+    letter-spacing: .1ch;
+    font-size: .9rem;
+    text-transform: uppercase;
+}
+
+::placeholder{
+    color: inherit;
+    opacity: .9;
+}

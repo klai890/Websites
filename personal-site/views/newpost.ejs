@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layouts/header') %>
+<body>
+    <%- include('./layouts/nav') %>
+    <section class="header">New Post</section>
+    <section class="content contact-content">
+        <form action="/store/contact" class='contact-form'>
+            <div class="form-area">
+                <input type="text" placeholder='Title' name='title'>
+            </div>
+            <div class="form-area">
+                <input type="text" placeholder='Body' name='body'>
+            </div>
+            <div class="form-area">
+                <button type='submit' class='submit-btn'>Send</button>
+            </div>
+        </form>
+    </section>
+    <%- include('./layouts/footer') %>
+</body>
+</html>

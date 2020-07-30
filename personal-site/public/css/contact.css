@@ -1,0 +1,40 @@
+.contact-content{
+    margin: 3rem 20rem;
+}
+
+.form-area{
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #aaa;
+}
+
+.form-area:nth-last-of-type(1){
+    border: none;
+}
+
+.form-area input, .form-area textarea{
+    font-size: 1.25rem;
+    width: 100%;
+    padding: .5rem;
+    outline: none;
+}
+
+.form-area ::placeholder{
+    color: #808080;
+}
+
+textarea{
+    width: 100%;
+    outline: none;
+    resize: none;
+}
+
+.submit-btn{
+    background: var(--green);
+    color: var(--light);
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;  
+    letter-spacing: .1ch;
+    text-transform: uppercase;
+    
+}

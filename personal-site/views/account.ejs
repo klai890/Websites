@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layouts/header') %>
+<body>
+    <%- include('./layouts/nav') %>
+    <section class="content">
+        <form action="/logout" method='post'>
+            <h1 class='title'>Currently logged in as <%= username %></h1>
+            <button type='submit' class='submit-btn'>Logout</button>
+        </form>
+    </section>
+    <%- include('./layouts/footer') %>
+</body>
+</html>

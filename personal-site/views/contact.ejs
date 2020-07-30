@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layouts/header') %>
+<body>
+    <%- include('./layouts/nav') %>
+    <section class="header">Contact Me</section>
+    <section class="content contact-content">
+        <form action="/store/contact" class='contact-form'>
+            <div class="form-area">
+                <input type="text" placeholder='Name' name='name'>
+            </div>
+            <div class="form-area">
+                <input type="text" placeholder='Email Address' name='email'>
+            </div>
+            <div class="form-area">
+                <textarea name="feedback" id="feedback" cols="30" rows="10" name='feedback' placeholder='Message'></textarea>
+            </div>
+            <div class="form-area">
+                <button type='submit' class='submit-btn'>Send</button>
+            </div>
+        </form>
+    </section>
+    <%- include('./layouts/footer') %>
+</body>
+</html>

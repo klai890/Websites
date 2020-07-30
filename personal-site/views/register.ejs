@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layouts/header') %>
+<body>
+    <%- include('./layouts/nav') %>
+    <section class="header">Register</section>
+    <section class="content contact-content">
+        <form action="/users/register" class='contact-form' method='post'>
+            <div class="form-area">
+                <input type="text" placeholder='Username' name='username'>
+            </div>
+            <div class="form-area">
+                <input type="password" placeholder='Password' name='password'>
+            </div>
+            <div class="form-area">
+                <button type='submit' class='submit-btn'>Send</button>
+            </div>
+        </form>
+    </section>
+    <%- include('./layouts/footer') %>
+</body>
+</html>
