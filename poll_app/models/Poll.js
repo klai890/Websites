@@ -6,6 +6,10 @@ const PollSchema = new Schema({
     description: String,
     creator: String,
     date: {type: Date, default: Date.now},
+    votes: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Vote'
+    }],
     options: Schema.Types.Mixed
 });
 

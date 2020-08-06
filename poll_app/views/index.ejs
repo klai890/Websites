@@ -3,21 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/index.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <title>Polling Home</title>
 </head>
 <body>
-    <%- include('./layouts/nav.ejs') %>
-    <div class="hero">
-        <img src="img/polls.svg" class='hero-img'>
-        <section>
-            <h1 class='title'>Polar Polls</h1>
-            <p class="subtitle">Polling made quick and easy</p>
-            <a href="/browse" class="btn">Browse Polls</a>
-            <a href="/create-poll" class="btn">Create a Poll</a>
-        </section>
-    </div>
-    <%- include('./layouts/plus.ejs') %>
+    <%- include('./layouts/nav') %>
+    <!-- poll box -->
+    <section class="pollbox">
+        <form action="/create" method='POST' id='pollform'>
+            <textarea class='poll-title' name='question' placeholder='Your Poll Title'></textarea>
+            <textarea class='poll-description' name='poll-description' placeholder='Your Poll Description'></textarea>
+            <div class="options">
+                <div class="option">
+                    <input class="option" name='option' placeholder='Option 1'>
+                    <button class='opt-rm' disabled="disabled" >
+                        <div class="line line1"></div>
+                        <div class="line line2"></div>
+                    </button>
+                </div>
+                <div class="option">
+                    <input class="option" name='option' placeholder='Option 2'>
+                    <button class='opt-rm' disabled="disabled" >
+                        <div class="line line1"></div>
+                        <div class="line line2"></div>
+                    </button>
+                </div>
+            </div>
+            <button class='submit'>Submit</button>
+        </form>
+    </section>
+
+    <!-- blue cover -->
+    <section class="blue-cover"></section>
+
+    <!-- self promo -->
+    <section class="self-promotion">
+        <header>
+            <h1>Pollare Polls</h1>
+            <hr />
+            <p>Pollare Polls allows you to create polls within seconds, no account required!</p>
+        </header>
+        <img src="/img/self-promo.svg" alt="">
+    </section>
+
+    <!-- features section -->
+    <section class="features-section">
+        <header>
+            <h1>Our Features</h1>
+            <hr>
+        </header>
+        <div class="features">
+            <div class="feature feature-1">
+                <img src="https://image.flaticon.com/icons/svg/1312/1312262.svg" alt="">
+                <h3>Create Polls</h3>
+                <p>Create a new poll for free, no sign in required!</p>
+            </div>
+            <div class="feature feature2">
+                <img src="https://image.flaticon.com/icons/svg/3079/3079011.svg" alt="">
+                <h3>View Descriptive Charts</h3>
+                <p>Live charts make it easy to visualize the results.</p>
+            </div>
+            <div class="feature feature3">
+                <img src="https://image.flaticon.com/icons/svg/955/955213.svg" alt="">
+                <h3>Share Polls</h3>
+                <p>Share your poll to your friends and colleagues with a link!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        &copy; Pollare Polls 2020
+    </footer>
 </body>
 </html>
